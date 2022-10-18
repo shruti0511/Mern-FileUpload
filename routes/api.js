@@ -14,9 +14,12 @@ router.get('/books', (req, res, next) => {
 
 //to add book
 router.route('/books').post(upload.single('book_image'), (req, res) => {
-
+  // console.log(req.file.filename)
   if (req.body.title) {
-    Book.create(req.body)
+    var bookObj = req.body;
+    bookObj.book_image =req.file.filename
+    console.log(bookObj)
+    Book.create(bookObj)
       .then((data) => res.json(data))
       .catch((err) => console.log(err));
   } else {
