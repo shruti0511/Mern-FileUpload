@@ -7,16 +7,14 @@ export default function BooksList({ books, deleteBookfun, getBookFun }) {
 
     const BookRow = (item, index) => {
         debugger
-        var x = '..../images/'+item.book_image;
-        console.log(x)
-
-
+        var imagePath = 'http://localhost:5000/images/'+item.book_image;
         return (
             <tr key={index} >
                 <td>{index + 1}</td>
                 <td><img
-                    src="../logo192.png"
-                    // alt={item.title}
+                    src={imagePath}
+                    alt={item.title}
+                    style={{width:'80px', height:'100px'}}
                 /></td>
                 <td>{item.title}</td>
                 <td>{item.author}</td>
